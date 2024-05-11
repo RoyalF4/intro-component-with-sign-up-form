@@ -1,0 +1,116 @@
+:root {
+  --red: hsl(0, 100%, 74%);
+  --green: hsl(154, 59%, 51%);
+  --blue: hsl(248, 32%, 49%);
+  --dark-blue: hsl(249, 10%, 26%);
+  --grayish-blue: hsl(246, 25%, 77%);
+}
+
+.main {
+  font-family: 'Poppins';
+  color: white;
+  min-height: 100vh;
+  background: url('/images/bg-intro-mobile.png') no-repeat var(--red)
+    center/cover;
+  padding: 7em 2em 3em 2em;
+}
+
+.main__heading {
+  font-size: 1.9rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3em;
+  margin-bottom: 1em;
+}
+
+.main__subtext {
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5em;
+  margin-bottom: 3em;
+}
+
+.main__trial {
+  background: var(--blue);
+  padding: 1em 3em;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.6em;
+  margin-bottom: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 8px rgba(0, 0, 0, 0.131);
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.main__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: white;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 8px rgba(0, 0, 0, 0.131);
+}
+
+.form__input {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.093);
+  border-radius: 5px;
+  padding-right: 2em;
+}
+
+.input-field {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1.2em 1em;
+  color: var(--dark-blue);
+  border: none;
+  flex: 1;
+}
+
+.input-field::placeholder {
+  color: var(--dark-blue);
+}
+
+.form__submit {
+  background-color: var(--green);
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1.4em 1em;
+  box-shadow: 0 5px hsl(154, 59%, 46%);
+  cursor: pointer;
+}
+
+.form__submit:hover {
+  background-color: hsl(154, 59%, 61%);
+}
+
+.form__submit:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+.disclaimer {
+  color: var(--grayish-blue);
+  text-align: center;
+  padding: 0 1em;
+  font-size: 0.81rem;
+  font-weight: 500;
+  line-height: 1.8em;
+}
+
+.link-important {
+  text-decoration: none;
+  color: red;
+  font-weight: 600;
+}
