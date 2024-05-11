@@ -6,13 +6,25 @@
   --grayish-blue: hsl(246, 25%, 77%);
 }
 
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('/images/bg-intro-mobile.png') no-repeat var(--red)
+    center/cover;
+}
+
 .main {
+  box-sizing: border-box;
   font-family: 'Poppins';
   color: white;
   min-height: 100vh;
-  background: url('/images/bg-intro-mobile.png') no-repeat var(--red)
-    center/cover;
   padding: 7em 2em 3em 2em;
+  max-width: 1440px;
 }
 
 .main__heading {
@@ -47,9 +59,9 @@
 }
 
 .main__form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   background: white;
   padding: 1.5em;
   border-radius: 10px;
@@ -59,9 +71,10 @@
 .form__input {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.093);
+  border: 1px solid rgba(0, 0, 0, 0.181);
   border-radius: 5px;
   padding-right: 2em;
+  margin-bottom: 20px;
 }
 
 .input-field {
@@ -113,4 +126,59 @@
   text-decoration: none;
   color: red;
   font-weight: 600;
+}
+
+@media (min-width: 700px) {
+  #root {
+    background: url('/images/bg-intro-desktop.png') no-repeat var(--red)
+      center/cover;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content auto;
+    grid-template-areas: 'text trial' 'text form';
+    align-items: start;
+    padding: 8rem 10rem 10rem 10rem;
+  }
+
+  .main__text {
+    grid-area: text;
+    align-self: center;
+  }
+
+  .main__heading {
+    font-size: 3rem;
+    text-align: left;
+    padding-right: 1.5em;
+  }
+
+  .main__subtext {
+    font-size: 1rem;
+    text-align: left;
+    padding-right: 3em;
+  }
+
+  .main__trial {
+    grid-area: trial;
+  }
+
+  .main__form {
+    grid-area: form;
+    padding: 2.5em;
+  }
+
+  .form__input {
+    margin-bottom: 40px;
+  }
+
+  .input-field {
+    padding: 1.5em 2em;
+  }
+
+  .form__submit {
+    padding: 1em 0;
+    margin-bottom: 20px;
+  }
 }

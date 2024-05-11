@@ -1,16 +1,19 @@
 export default function App() {
   return (
     <main className="main">
-      <h1 className="main__heading">Learn to code by watching others</h1>
-      <p className="main__subtext">
-        See how experienced developers solve problems in real-time. Watching
-        scripted tutorials is great, but understanding how developers think is
-        invaluable.
-      </p>
+      <div className="main__text">
+        <h1 className="main__heading">Learn to code by watching others</h1>
+        <p className="main__subtext">
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </div>
       <p className="main__trial">
         <span className="fw-700">Try it free 7 days</span> then $20/mo.
         thereafter
       </p>
+
       <form action="" className="main__form">
         <div className="form__input">
           <input
