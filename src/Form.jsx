@@ -1,107 +1,73 @@
 import { useState, useRef } from 'react';
-import validation from './validation';
+import Input from './Input';
 
 export default function Form() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState({});
-
-  const firstNameInput = useRef(null);
-  const lastNameInput = useRef(null);
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
-
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
-  }
-
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
+  const [error, setError] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const formRef = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setError(
-      validation(
-        firstNameInput.current,
-        lastNameInput.current,
-        emailInput.current,
-        passwordInput.current
-      )
-    );
+
+    const inputs = [
+      formRef.current.querySelector('#firstName'),
+      formRef.current.querySelector('#lastName'),
+      formRef.current.querySelector('#email'),
+      formRef.current.querySelector('#password'),
+    ];
+
+    inputs.forEach((input) => {
+      let errorString = '';
+
+      if (input.validity.valueMissing) {
+        errorString = `${input.placeholder} cannon be empty`;
+      } else if (input.name === 'email' && input.validity.typeMismatch) {
+        errorString = `Must be a valid email`;
+      } else if (input.name === 'password' && input.value.length < 8) {
+        errorString = 'Must be at least 8 characters long';
+      }
+
+      setError((error) => {
+        return { ...error, [input.name]: errorString };
+      });
+    });
   }
 
   return (
-    <form action="" className="main__form" noValidate onSubmit={handleSubmit}>
-      <div className={`form__input ${error.first ? 'border-error' : ''}`}>
-        <input
-          value={firstName}
-          onChange={handleFirstName}
-          type="text"
-          name="firstName"
-          id="firstName"
-          className="input-field"
-          placeholder="First Name"
-          ref={firstNameInput}
-          required
-        />
-        {error.first && (
-          <img src="/images/icon-error.svg" alt="" className="icon-error" />
-        )}
-      </div>
-      {error.first && <span className="error-message">{error.first}</span>}
-      <div className="form__input">
-        <input
-          value={lastName}
-          onChange={handleLastName}
-          type="text"
-          name="lastName"
-          id="lastName"
-          className="input-field"
-          placeholder="Last Name"
-          ref={lastNameInput}
-          required
-        />
-        <img src="/images/icon-error.svg" alt="" className="icon-error" />
-      </div>
-      <div className="form__input">
-        <input
-          value={email}
-          onChange={handleEmail}
-          type="email"
-          name="email"
-          id="email"
-          className="input-field"
-          placeholder="Email"
-          ref={emailInput}
-          required
-        />
-        <img src="/images/icon-error.svg" alt="" className="icon-error" />
-      </div>
-      <div className="form__input">
-        <input
-          value={password}
-          onChange={handlePassword}
-          type="password"
-          name="password"
-          id="password"
-          className="input-field"
-          placeholder="Password"
-          ref={passwordInput}
-          required
-        />
-        <img src="/images/icon-error.svg" alt="" className="icon-error" />
-      </div>
+    <form
+      ref={formRef}
+      className="main__form"
+      noValidate
+      onSubmit={handleSubmit}
+    >
+      <Input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        error={error.firstName}
+      />
+      <Input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        error={error.lastName}
+      />
+      <Input
+        type="email"
+        name="email"
+        placeholder="Email"
+        error={error.email}
+      />
+      <Input
+        type="password"
+        name="password"
+        placeholder="Password"
+        error={error.password}
+      />
       <button className="form__submit">Claim your free trial</button>
       <span className="disclaimer">
         By clicking the button, you are agreeing to our
