@@ -1,3 +1,5 @@
+import Form from './Form';
+
 export default function App() {
   return (
     <main className="main">
@@ -13,58 +15,7 @@ export default function App() {
         <span className="fw-700">Try it free 7 days</span> then $20/mo.
         thereafter
       </p>
-
-      <form action="" className="main__form">
-        <div className="form__input">
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            className="input-field"
-            placeholder="First Name"
-          />
-          <img src="/images/icon-error.svg" alt="" className="icon-error" />
-        </div>
-        <div className="form__input">
-          <input
-            type="text"
-            name="secondName"
-            id="secondName"
-            className="input-field"
-            placeholder="Last Name"
-          />
-          <img src="/images/icon-error.svg" alt="" className="icon-error" />
-        </div>
-        <div className="form__input">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="input-field"
-            placeholder="Email"
-          />
-          <img src="/images/icon-error.svg" alt="" className="icon-error" />
-        </div>
-        <div className="form__input">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="input-field"
-            placeholder="Password"
-          />
-          <img src="/images/icon-error.svg" alt="" className="icon-error" />
-        </div>
-        <a href="#" className="form__submit">
-          Claim your free trial
-        </a>
-        <span className="disclaimer">
-          By clicking the button, you are agreeing to our
-          <a href="#" className="link-important">
-            {` Terms and Services`}
-          </a>
-        </span>
-      </form>
+      <Form />
     </main>
   );
 }

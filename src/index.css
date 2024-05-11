@@ -72,9 +72,8 @@ body {
   display: flex;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.181);
-  border-radius: 5px;
+  border-radius: 6px;
   padding-right: 2em;
-  margin-bottom: 20px;
 }
 
 .input-field {
@@ -86,6 +85,10 @@ body {
   flex: 1;
 }
 
+.input-field:focus {
+  outline: none;
+}
+
 .input-field::placeholder {
   color: var(--dark-blue);
 }
@@ -94,7 +97,7 @@ body {
   background-color: var(--green);
   text-transform: uppercase;
   color: white;
-  text-decoration: none;
+  border: none;
   font-weight: 600;
   font-size: 1.1rem;
   text-align: center;
@@ -126,6 +129,17 @@ body {
   text-decoration: none;
   color: red;
   font-weight: 600;
+}
+
+.error-message {
+  color: red;
+  text-align: end;
+  font-style: italic;
+  padding: 0.5em 0;
+}
+
+.border-error {
+  border: 2px solid red;
 }
 
 @media (min-width: 700px) {
@@ -170,7 +184,6 @@ body {
   }
 
   .form__input {
-    margin-bottom: 40px;
   }
 
   .input-field {
